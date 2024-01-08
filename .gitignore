@@ -1,0 +1,9 @@
+/batchfiles
+/build
+/dist
+/release_files
+/FirstRunModels
+/__pycache__
+*.pth
+*.ort
+*.onnx
