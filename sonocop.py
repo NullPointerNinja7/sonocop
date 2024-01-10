@@ -3,7 +3,8 @@ import os
 os.environ['FOR_DISABLE_CONSOLE_CTRL_HANDLER'] = '1'
 import argparse
 import signal
-import analyze_onnx
+import common.analyze_onnx as analyze_onnx
+import common.globals as globals
 import sys
 
 def signal_handler(sig, frame):
@@ -37,15 +38,7 @@ def main():
 
     signal.signal(signal.SIGINT, signal_handler)
 
-    if getattr(sys, 'frozen', False):
-        # If the application is run as a bundle, the PyInstaller bootloader
-        # extends the sys module by a flag frozen=True and sets the app 
-        # path into variable _MEIPASS'.
-        application_path = sys._MEIPASS  
-    else:
-        application_path = os.path.dirname(os.path.abspath(__file__)) 
-        
-    model_path = os.path.join(application_path, "model.ort")
+    model_path =globals.getmodelpath()
 
     analyze_onnx.analyze_onnx(providers, args.input_dir, model_path, args.skip_info, args.skip_warning)
 

@@ -1,6 +1,6 @@
 import onnxruntime as ort
 import numpy as np
-import create_fft
+import common.create_fft as create_fft
 import os
 import numpy as np
 

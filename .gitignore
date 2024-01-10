@@ -4,6 +4,11 @@
 /release_files
 /FirstRunModels
 /__pycache__
+*/__pycache__
 *.pth
 *.ort
 *.onnx
+build.sh
+combined_plot.png
+extended_accuracy_report.txt
+*.spec
