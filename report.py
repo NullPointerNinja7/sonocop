@@ -206,7 +206,13 @@ def main():
     signal.signal(signal.SIGINT, signal_handler)
 
     model_path =globals.getmodelpath()
-    print (f"Opening model from {model_path}")
+    # Check if the file exists
+    if not os.path.exists(model_path):
+        print(f"File does not exist: {model_path}")
+        sys.exit(1)  # Exit the program with a non-zero exit code to indicate an error
+
+    # If the file exists, continue with your program
+    print(f"Opening model from {model_path}")
     evaluate_model_accuracy(args.good_dir, args.bad_dir, model_path, providers)
 
 if __name__ == "__main__":

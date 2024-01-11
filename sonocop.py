@@ -40,7 +40,16 @@ def main():
 
     model_path =globals.getmodelpath()
 
-    analyze_onnx.analyze_onnx(providers, args.input_dir, model_path, args.skip_info, args.skip_warning)
+    # Check if the file exists
+    if not os.path.exists(model_path):
+        print(f"File does not exist: {model_path}")
+        sys.exit(-1)  # Exit the program with a non-zero exit code to indicate an error
+
+    # If the file exists, continue with your program
+    print(f"Opening model from {model_path}")
+
+    bad_file_count = analyze_onnx.analyze_onnx(providers, args.input_dir, model_path, args.skip_info, args.skip_warning)
+    sys.exit(bad_file_count)
 
 if __name__ == "__main__":
     main()

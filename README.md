@@ -1,6 +1,13 @@
 Sonocop
 ---------
 
+Updated V1.2: 
+   - Added Reporting program to report accuracy against a collection of known good and bad files
+
+Update V1.3
+   - Handle case where model file is missing
+   - Now returns number of bad files as exit code (useful for validation scripts)
+
 Analyze flac files in folder (check if they are transcoded using current model):
 
     #verbosely check all files in folder

@@ -18,6 +18,8 @@ def print_score(file_path, skip_warning, skip_info, score_percent):
 def analyze_onnx(providers, input_dir, model_filename, skip_info=False, skip_warning=False):
     print(f"Analyzing .flac files")
 
+    bad_file_count = 0  # Initialize counter for bad files
+
     for root, dirs, files in os.walk(input_dir):
             for filename in files:
                 if filename.endswith('.flac'):
@@ -44,6 +46,8 @@ def analyze_onnx(providers, input_dir, model_filename, skip_info=False, skip_war
                     # Run the model
                     outputs = session.run(None, {'input': S_dBFS})
                     score_percentage = (1 - outputs[0].item()) * 100  # Convert to percentage
+                    if (score_percentage > 50):
+                        bad_file_count += 1  # Increment the bad file count
                     print_score(file_path, skip_warning, skip_info, score_percentage)
 
-
+    return bad_file_count
