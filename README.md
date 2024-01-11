@@ -1,7 +1,6 @@
 Sonocop
 ---------
 
-
 Updated V1.2: 
    - Added Reporting program to report accuracy against a collection of known good and bad files
 
