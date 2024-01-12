@@ -1,6 +1,9 @@
 Sonocop
 ---------
 
+Updated V1.3:
+   - published docker container
+
 Updated V1.2: 
    - Added Reporting program to report accuracy against a collection of known good and bad files
 
@@ -23,3 +26,11 @@ Report on accuracy
 
     python ./report.py 'c:\\temp\\sonocop\\flacs\\good\\new' 'C:\temp\\sonocop\\flacs\\bad\\new'
     
+Running from docker
+
+    sudo docker run --rm -v "/path/to/flac/files:/data" nullpointerninja7/sono
+cop:latest
+    # print number of transcodes:
+    echo $?
+
+ 

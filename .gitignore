@@ -13,3 +13,6 @@ build.sh
 combined_plot.png
 extended_accuracy_report.txt
 *.spec
+build_docker.sh
+publish_docker.sh
+
